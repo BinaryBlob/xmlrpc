@@ -22,12 +22,13 @@ object, it can be used to get more control over connection options.
 
 To add arguments to your xmlrpc request create an xmlrpc.Struct{} and send it as the second parameter in the Call function.
 
+```
    client, _ := xmlrpc.NewClient("https://bugzilla.mozilla.org/xmlrpc.cgi", nil)
    result := xmlrpc.Struct{}
    payload := xmlrpc.Struct{"ids": "415555"}
    client.Call("Bug.get", payload, &result)
    fmt.Printf("Bug: %v\n", result)
-
+```
 ## Implementation details
 
 xmlrpc package contains clientCodec type, that implements [rpc.ClientCodec](http://golang.org/pkg/net/rpc/#ClientCodec)
